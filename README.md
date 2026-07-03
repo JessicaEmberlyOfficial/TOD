@@ -1,6 +1,24 @@
 # TOD
 A video game by Jessica Emberly.
 
+## "How do I help?"
+You can help the development of Emberly by sending in a ticket with your changes.
+
+## Requirements
+* Python
+* PyGame
+
+## Usage
+```
+git clone https://github.com/JessicaEmberlyOfficial/TOD/
+```
+```
+cd TOD
+```
+```
+python run.py
+```
+
 ## Credits
 ```
 Credits:
