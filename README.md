@@ -1,6 +1,8 @@
 # TOD
 A video game by Jessica Emberly.
 
+## What is included
+
 ## "How do I help?"
 You can help the development of Emberly by sending in a ticket with your changes.
 
