@@ -2,11 +2,15 @@ import os
 import time
 import pygame
 
-class start():
+def start():
   pygame.mixer.init()
   pygame.mixer.music.set_volume(1)
   pygame.mixer.music.load(os.getcwd() + "/assets/MUSIC/mainmenu.mp3")
   pygame.mixer.music.play(loops=-1)
+  os.system("clear")
+  mainmenu()
+
+def mainmenu():
   os.system("clear")
   question = input("""
 ////////////////////////////////////////////////////////////////////////
@@ -26,202 +30,27 @@ class start():
 (st)art game, (s)ettings, (h)elp, or (e)xit?: """)
   if question == "st":
     pygame.mixer.music.stop()
-    chapter1()
-  if question == "s":
     intro()
+  if question == "s":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    settings()
   if question == "h":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
     help()
   if question == "e":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+    pygame.mixer.Sound.play(sound)
+    time.sleep(1)
     os.system("clear")
     pygame.quit()
     os._exit(os.EX_OK)
   else:
     error1()
 
-def settings():
-  os.system("clear")
-  question = input("""
-////////////////////////////////////////////////////////////////////////
-//:::::::::::: ::   .:   :::. ::::::::::::                            //
-//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
-//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
-//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
-//     88,    888   mM8o888   888, 88,                                //
-//     MMM    MMM    YMMYMM   ""`  MMM                                //
-//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
-// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
-//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
-//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
-//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
-//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
-////////////////////////////////////////////////////////////////////////
-(r)esize, (g)o back, or (e)xit?: """)
-  if question == "r":
-    os.system("clear")
-    print("Please make sure that you resize your terminal. [3]")
-    time.sleep(1)
-    os.system("clear")
-    print("Please make sure that you resize your terminal. [2]")
-    time.sleep(1)
-    os.system("clear")
-    print("Please make sure that you resize your terminal. [1]")
-    time.sleep(1)
-    os.system("clear")
-    print("When the extended title card fits, please wait. [5]")
-    time.sleep(1)
-    os.system("clear")
-    print("When the extended title card fits, please wait. [4]")
-    time.sleep(1)
-    os.system("clear")
-    print("When the extended title card fits, please wait. [3]")
-    time.sleep(1)
-    os.system("clear")
-    print("When the extended title card fits, please wait. [2]")
-    time.sleep(1)
-    os.system("clear")
-    print("When the extended title card fits, please wait. [1]")
-    time.sleep(1)
-    os.system("clear")
-    count = 1
-    while count < 5:
-      os.system("clear")
-      print("""
-**********////////////////////////////////////////////////////////////////////////**********
-**********//:::::::::::: ::   .:   :::. ::::::::::::                            //**********
-**********//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //**********
-**********//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //**********
-**********//     $$    "$$$""'$$$c$$$cc$$$c  $$                                 //**********
-**********//     88,    888   "88o888   888, 88,                                //**********
-**********//     MMM    MMM    YMMYMM   ""`  MMM                                //**********
-**********//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//**********
-**********// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//**********
-**********//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //**********
-**********//$$$,     $$$$$$ "Y$c$$ $$""''         $$,    $$c$$$cc$$$c   c$$"    //**********
-**********//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //**********
-**********//  "YMMMMMP" MMM     YM ""''YUMMM      MMMMP"`   YMM   '"`mM'        //**********
-**********////////////////////////////////////////////////////////////////////////**********
-""")
-      count = count + 1
-      time.sleep(3)
-      os.system("clear")
-      if count == 5:
-        start()
-  if question == "g":
-    start()
-  if question == "e":
-    pygame.quit()
-    os.system("clear")
-    os._exit(os.EX_OK)
-
-def help():
-  os.system("clear")
-  question = input("""
-////////////////////////////////////////////////////////////////////////
-//:::::::::::: ::   .:   :::. ::::::::::::                            //
-//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
-//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
-//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
-//     88,    888   mM8o888   888, 88,                                //
-//     MMM    MMM    YMMYMM   ""`  MMM                                //
-//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
-// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
-//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
-//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
-//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
-//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
-////////////////////////////////////////////////////////////////////////
-(a)bout, (c)redits, (g)o back, or (e)xit?
-""")
-  if question == "a":
-    about()
-  if question == "c":
-    credits()
-  if question == "g":
-    start()
-  if question == "e":
-    os.system("clear")
-    os._exit(os.EX_OK)
-
-def about():
-  os.system("clear")
-  count = 10
-  while count > 1:
-    print("""
-////////////////////////////////////////////////////////////////////////
-//:::::::::::: ::   .:   :::. ::::::::::::                            //
-//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
-//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
-//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
-//     88,    888   mM8o888   888, 88,                                //
-//     MMM    MMM    YMMYMM   ""`  MMM                                //
-//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
-// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
-//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
-//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
-//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
-//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
-////////////////////////////////////////////////////////////////////////
-About:
-    - Created by:
-        - APITA Games:
-
-    - Notes:
-        - Please enjoy our game. ~ Jessica Emberly.
-        
-[This page will close in """ + str(count) + """]
-""")
-    time.sleep(1)
-    count = count - 1
-    os.system("clear")
-    if count == 1:
-      help()
-
-def credits():
-  os.system("clear")
-  count = 10
-  while count > 1:
-    print("""
-////////////////////////////////////////////////////////////////////////
-//:::::::::::: ::   .:   :::. ::::::::::::                            //
-//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
-//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
-//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
-//     88,    888   mM8o888   888, 88,                                //
-//     MMM    MMM    YMMYMM   ""`  MMM                                //
-//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
-// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
-//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
-//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
-//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
-//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
-////////////////////////////////////////////////////////////////////////
-Credits:
-    - Development team:
-        - Lead Developer:
-            - Jessica Emberly""" +
-        #- Assistant Developer
-            #- Siouxsie Gonzales
-    """- Main Menu:
-        - Music:
-            - MM-01 by TeddyBearSuicide
-    - In-Game:
-        - Sound Effects:
-            - 8-bit Game Start by u_xmiiqyhi46 on Pixabay
-            
-        - Characters (In order of appearance):
-            - Sebastian (Frog): Sebastian Sins
-            - Wendolyn (Frog): Wendolyn Dallas
-            - Caleb (Spider): Caleb Jimarez
-            
-[This page will close in """ + str(count) + """]
-""")
-    time.sleep(1)
-    count = count - 1
-    os.system("clear")
-    if count == 1:
-      help()
-
 def intro():
+  os.system("clear")
   print("""
 ////////////////////////////////////////////////////////////////////////
 //:::::::::::: ::   .:   :::. ::::::::::::                            //
@@ -238,7 +67,7 @@ def intro():
 //  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
 ////////////////////////////////////////////////////////////////////////
 Wendolyn: It
-""")
+        """)
   time.sleep(1)
   os.system("clear")
   print("""
@@ -256,8 +85,8 @@ Wendolyn: It
 //"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
 //  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
 ////////////////////////////////////////////////////////////////////////
-Wendolyn: It was
-""")
+Wendolyn: It all
+        """)
   time.sleep(1)
   os.system("clear")
   print("""
@@ -275,11 +104,237 @@ Wendolyn: It was
 //"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
 //  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
 ////////////////////////////////////////////////////////////////////////
-Wendolyn: It was that
-""")
+Wendolyn: It all began
+        """)
   time.sleep(1)
   os.system("clear")
-  
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began.
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began..
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began...
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began..
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began.
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that one
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that one day
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that one day.
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that one day..
+        """)
+  time.sleep(1)
+  os.system("clear")
+  print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Wendolyn: It all began that one day...
+        """)
+  chapter1()
 
 def chapter1():
   os.system("clear")
@@ -504,6 +559,9 @@ Y$     "$c cccc  cccc cccc  c$"     $Y
 """)
   time.sleep(1)
   os.system("clear")
+  ch1ierp()
+
+def ch1ierp():
   choice = input("""
   .: .:   :.    .:   :. :.
 ,;',;'     ';,,;'     ';,';,
@@ -522,6 +580,8 @@ Y$                        $Y (d): <[Sebastian, hey look, breathe, alright? You g
 .´                        `.
 Please choose a letter: """)
   if choice == "a":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
     os.system("clear")
     print("""
        `:  .::::.    .::::.  `:          
@@ -723,19 +783,27 @@ Y$     "$c cccc  cccc cccc  c$"     $Y
 ////////////////////////////////////////////////////////////////////////
 (s)ave game, (c)ontinue, or (e)xit: """)
     if save == "s":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       os.system("touch savefile.txt")
       with open("savefile.txt", "w") as f:
         f.write("a1")
       chapter2()
     if save == "c":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       chapter2()
     if save == "e":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       pygame.quit()
       os.system("clear")
       os._exit(os.EX_OK)
   if choice == "b":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+    pygame.mixer.Sound.play(sound)
     time.sleep(1)
     os.system("clear")
     print("""
@@ -938,18 +1006,27 @@ Y$                        $Y
 ////////////////////////////////////////////////////////////////////////
 (s)ave game, (c)ontinue, or (e)xit: """)
     if save == "s":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       os.system("touch savefile.txt")
       with open("savefile.txt", "w") as f:
         f.write("b1")
       chapter2()
     if save == "c":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       chapter2()
     if save == "e":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+      pygame.mixer.Sound.play(sound)
+      time.sleep(1)
       os.system("clear")
       os._exit(os.EX_OK)
   if choice == "c":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
     os.system("clear")
     print("""
        `:  .::::.    .::::.  `:          
@@ -1113,21 +1190,261 @@ Y$     "$c cccc  cccc cccc  c$"     $Y
 ////////////////////////////////////////////////////////////////////////
 (s)ave game, (c)ontinue, or (e)xit: """)
     if save == "s":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       os.system("touch savefile.txt")
       with open("savefile.txt", "w") as f:
-        f.write("c1")
+        f.write("b1")
       chapter2()
     if save == "c":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+      pygame.mixer.Sound.play(sound)
       os.system("clear")
       chapter2()
     if save == "e":
+      sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+      pygame.mixer.Sound.play(sound)
+      time.sleep(1)
       os.system("clear")
       os._exit(os.EX_OK)
   #if save == "d":
   #if save == "e":
+  else:
+    error2()
+
+def settings():
+  os.system("clear")
+  question = input("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+(r)esize, (g)o back, or (e)xit?: """)
+  if question == "r":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    os.system("clear")
+    print("Please make sure that you resize your terminal. [3]")
+    time.sleep(1)
+    os.system("clear")
+    print("Please make sure that you resize your terminal. [2]")
+    time.sleep(1)
+    os.system("clear")
+    print("Please make sure that you resize your terminal. [1]")
+    time.sleep(1)
+    os.system("clear")
+    print("When the extended title card fits, please wait. [5]")
+    time.sleep(1)
+    os.system("clear")
+    print("When the extended title card fits, please wait. [4]")
+    time.sleep(1)
+    os.system("clear")
+    print("When the extended title card fits, please wait. [3]")
+    time.sleep(1)
+    os.system("clear")
+    print("When the extended title card fits, please wait. [2]")
+    time.sleep(1)
+    os.system("clear")
+    print("When the extended title card fits, please wait. [1]")
+    time.sleep(1)
+    os.system("clear")
+    count = 1
+    while count < 20:
+      os.system("clear")
+      print("""
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+**********////////////////////////////////////////////////////////////////////////**********
+**********//:::::::::::: ::   .:   :::. ::::::::::::                            //**********
+**********//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //**********
+**********//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //**********
+**********//     $$    "$$$""'$$$c$$$cc$$$c  $$                                 //**********
+**********//     88,    888   "88o888   888, 88,                                //**********
+**********//     MMM    MMM    YMMYMM   ""`  MMM                                //**********
+**********//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//**********
+**********// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//**********
+**********//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //**********
+**********//$$$,     $$$$$$ "Y$c$$ $$""''         $$,    $$c$$$cc$$$c   c$$"    //**********
+**********//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //**********
+**********//  "YMMMMMP" MMM     YM ""''YUMMM      MMMMP"`   YMM   '"`mM'        //**********
+**********////////////////////////////////////////////////////////////////////////**********
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+********************************************************************************************
+""")
+      count = count + 1
+      time.sleep(3)
+      os.system("clear")
+      if count == 5:
+        mainmenu()
+  if question == "g":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    mainmenu()
+  if question == "e":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+    pygame.mixer.Sound.play(sound)
+    time.sleep(1)
+    pygame.quit()
+    os.system("clear")
+    os._exit(os.EX_OK)
+
+def help():
+  os.system("clear")
+  question = input("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+(a)bout, (c)redits, (g)o back, or (e)xit?
+""")
+  if question == "a":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    about()
+  if question == "c":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    credits()
+  if question == "g":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/buttonpress.mp3")
+    pygame.mixer.Sound.play(sound)
+    mainmenu()
+  if question == "e":
+    sound = pygame.mixer.Sound(os.getcwd() + "/assets/SFX/gameexit.mp3")
+    pygame.mixer.Sound.play(sound)
+    time.sleep(1)
+    os.system("clear")
+    os._exit(os.EX_OK)
+
+def about():
+  os.system("clear")
+  count = 10
+  while count > 1:
+    print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+About:
+    - Created by:
+        - APITA Games:
+
+    - Notes:
+        - Please enjoy our game. ~ Jessica Emberly.
+        
+[This page will close in """ + str(count) + """]
+""")
+    time.sleep(1)
+    count = count - 1
+    os.system("clear")
+    if count == 1:
+      help()
+
+def credits():
+  os.system("clear")
+  count = 10
+  while count > 1:
+    print("""
+////////////////////////////////////////////////////////////////////////
+//:::::::::::: ::   .:   :::. ::::::::::::                            //
+//;;;;;;;;'''',;;   ;;,  ;;`;;;;;;;;;;''''                            //
+//     [[    ,[[[,,,[[[ ,[[ '[[,   [[                                 //
+//     $$    "$$$nnn$$$c$$$cc$$$c  $$                                 //
+//     88,    888   mM8o888   888, 88,                                //
+//     MMM    MMM    YMMYMM   ""`  MMM                                //
+//    ...   :::.    :::..,::::::      :::::::-.    :::.  .-:.     ::-.//
+// .;;;;;;;.`;;;;,  `;;;;;;;''''       ;;,   `';,  ;;`;;  ';;.   ;;;;'//
+//,[[     \[[,[[[[[. '[[ [[cccc        `[[     [[ ,[[ '[[,  '[[,[[['  //
+//$$$,     $$$$$$ "Y$c$$ $$´´´´         $$,    $$c$$$cc$$$c   c$$$    //
+//"888,_ _,88P888    Y88 888oo,__       888_,o8P' 888   888,,8P"`     //
+//  "YMMMMMP" MMM     YM `""YUMMM      MMMMP"`   YMM   ""`mM´         //
+////////////////////////////////////////////////////////////////////////
+Credits:
+    - Development team:
+        - Lead Developer:
+            - Jessica Emberly""" +
+        #- Assistant Developer
+            #- Siouxsie Gonzales
+    """
+    - Writers:
+        - Jessica Emberly
+        - Wendolyn Dallas
+        - Jamie Jaxon
+
+    - General:
+        - SFX:
+           - Lose-SFX by DrumMusicLooper5000 from Pixabay
+
+    - Main Menu:
+        - Music:
+            - MM-01 by TeddyBearSuicide
+
+        - SFX:
+            - 8-bit Game Start by u_xmiiqyhi46 on Pixabay
+
+    - In-Game:
+        - Characters (In order of appearance):
+            - Sebastian (Frog): Sebastian Sins
+            - Wendolyn (Frog): Wendolyn Dallas
+            - Caleb (Spider): Caleb Jimarez
+            
+[This page will close in """ + str(count) + """]
+""")
+    time.sleep(1)
+    count = count - 1
+    os.system("clear")
+    if count == 1:
+      help()
 
 def chapter2():
+
   os.system("clear")
   print("Therapist: So, you..., you miss him? Caleb?")
   time.sleep(5)
@@ -1151,6 +1468,7 @@ mM"          "MmmM"      "MM" () "MM"      "MmmM"          "Mm <[I just...]>
 mM"          "MmmM"      "MM" () "MM"      "MmmM"          "Mm <[Yes, I miss him.]>
 """)
   time.sleep(3)
+
 def error1():
   os.system("clear")
   print("Invalid entry, please try again. [5]")
@@ -1167,4 +1485,22 @@ def error1():
   os.system("clear")
   print("Invalid entry, please try again. [1]")
   os.system("clear")
-  start()
+  mainmenu()
+
+def error2():
+  os.system("clear")
+  print("Invalid entry, please try again. [5]")
+  time.sleep(1)
+  os.system("clear")
+  print("Invalid entry, please try again. [4]")
+  time.sleep(1)
+  os.system("clear")
+  print("Invalid entry, please try again. [3]")
+  time.sleep(1)
+  os.system("clear")
+  print("Invalid entry, please try again. [2]")
+  time.sleep(1)
+  os.system("clear")
+  print("Invalid entry, please try again. [1]")
+  os.system("clear")
+  ch1ierp()
